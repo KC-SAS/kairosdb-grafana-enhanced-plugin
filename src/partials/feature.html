@@ -1,0 +1,51 @@
+<div class="gf-form-group" style="margin-bottom:0">
+    <div class="gf-form-inline" ng-class="{'highlight' : pickedComponent}">
+        <div class="gf-form">
+            <label class="gf-form-label feature-label query-keyword width-11" bs-tooltip="'{{ctrl.template.label}}'" data-placement="left"
+                data-delay='{"show":"500", "hide":"150"}'>
+                {{ctrl.template.label}}
+            </label>
+            <div class="gf-form-select-wrapper">
+                <select class="gf-form-input gf-size-auto" ng-model="ctrl.chosenIndex" ng-change="ctrl.pick(ctrl.template.components[ctrl.chosenIndex])">
+                    <option value="" disabled selected>Select {{ctrl.template.label.toLowerCase()}}</option>
+                    <option ng-repeat="component in ctrl.template.components track by $index" value="{{$index}}">{{component.label}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="gf-form" ng-if="pickedComponent" bs-tooltip="pickedComponent.description" data-delay='{"show":"300", "hide":"150"}'>
+            <label class="gf-form-label">
+                <i class="fa fa-info"></i>
+            </label>
+        </div>
+        <div class="gf-form" ng-if="ctrl.isThereOptionalParameters(pickedComponent)">
+            <gf-form-switch class="gf-form" label="Show optional parameters" checked="ctrl.showOptional"></gf-form-switch>
+        </div>
+        <div class="separator"></div>
+        <kairosdb-feature-component-editor class="gf-form-inline" component="pickedComponent"></kairosdb-feature-component-editor>
+        <div class="separator"></div>
+        <div class="gf-form" ng-if="pickedComponent">
+            <label class="gf-form-label">
+                <a ng-click="ctrl.commit(pickedComponent, pickedComponent.position)">
+                    <i class="fa fa-plus-circle"></i>
+                    <span ng-if="pickedComponent.position === -1">ADD</span>
+                    <span ng-if="pickedComponent.position !== -1">EDIT</span>
+                </a>
+            </label>
+        </div>
+        <div class="gf-form" ng-if="pickedComponent">
+            <label class="gf-form-label">
+                <a ng-click="ctrl.clear()">
+                    <i class="fa fa-times"></i>
+                </a>
+            </label>
+        </div>
+    </div>
+    <!-- List of all component -->
+    <kairosdb-feature-component class="gf-form-inline"
+                       ng-repeat="component in ctrl.feature.components track by $index"
+                       component="component"
+                       on-remove="ctrl.remove(component)"
+                       on-edit="ctrl.edit(component)"
+                       on-move-up="ctrl.moveUp(component)"
+                       on-move-down="ctrl.moveDown(component)"></kairosdb-feature-component>
+</div>

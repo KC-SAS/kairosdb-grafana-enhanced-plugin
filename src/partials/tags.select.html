@@ -1,0 +1,22 @@
+<div class="gf-form">
+    <div class="tags-container offset-width-11">
+        <div class="gf-form">
+            <label class="gf-form-label width-10"
+                   ng-class="{'inactiveTag': ctrl.tagValues.length === 1}"
+                   bs-tooltip="'Values: ' + ctrl.tagValues.join(', ')">
+                {{ctrl.tagName}} ({{ctrl.selectedValues.length}}/{{ctrl.tagValues.length}})
+            </label>
+        </div>
+    </div>
+
+    <div class="tags-container">
+        <div class="gf-form" ng-repeat="segment in ctrl.segments">
+            <kairosdb-tag-input segment="segment" tag-values="ctrl.availableValues" on-change="ctrl.onChange()"></kairosdb-tag-input>
+            <div class="gf-form-label" ng-if="!$last">
+                <a ng-click="ctrl.remove(segment)">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

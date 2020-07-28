@@ -1,0 +1,129 @@
+<div class="gf-form-inline">
+    <div class="gf-form">
+        <div class="gf-form">
+            <label class="gf-form-label query-keyword width-11">
+                Metric
+                <label class="gf-form-label" bs-tooltip="ctrl.errors.metric" style="color: rgb(229, 189, 28)" ng-show="ctrl.errors.metric">
+                    <i class="fa fa-warning"></i>
+                </label>
+            </label>
+        </div>
+    </div>
+
+    <kairosdb-metric-name-field value="ctrl.target.query.metricName" alias="ctrl.target.query.alias" metric-names="ctrl.datasource.metricNamesStore.metricNames"></kairosdb-metric-name-field>
+
+    <div class="gf-form">
+        <label class="gf-form-label" bs-tooltip="'Refresh metric names'" ng-click="ctrl.loadMetricNames()">
+            <a>
+                <i class="fa fa-undo fa-rotate-45"></i>
+            </a>
+        </label>
+    </div>
+
+    <div class="gf-form gf-form--grow"></div>
+    <div class="gf-form" ng-if="ctrl.showQueryAutoSync">
+        <label class="gf-form-label" bs-tooltip="'Toggle Auto Refresh'" ng-click="ctrl.toggleAutoSync()">
+            <a>
+                <i class="fa fa-refresh width-1" ng-class="{'fa-spin fa-fw green' : ctrl.target.autoSync, 'darkgray': !ctrl.target.autoSync}"></i>
+            </a>
+        </label>
+    </div>
+    <div class="gf-form" ng-if="ctrl.datasource.type === 'grafana-skyminer-datasource'">
+        <label class="gf-form-label"
+               bs-tooltip="'Safeguard limits'"
+               ng-click="ctrl.toggleSafeguard()">
+            <a>
+                <i class="fa width-1"  ng-class="{'fa-lock green' : !ctrl.expandSafeguard, 'fa-unlock red': ctrl.expandSafeguard}" ></i>
+            </a>
+        </label>
+    </div>
+    <div class="gf-form" ng-if="ctrl.datasource.type === 'grafana-skyminer-datasource'">
+        <label class="gf-form-label"
+               bs-tooltip="'Fetch previous samples'"
+               ng-click="ctrl.toggleFetchprevioussample()">
+            <a>
+                <i class="fa fa-line-chart width-1" ng-class="{'green' : ctrl.enabledFetchPreviousSamples, 'darkgray': !ctrl.enabledFetchPreviousSamples}"></i>
+            </a>
+        </label>
+    </div>
+</div>
+
+<div class="gf-form-inline" ng-if="ctrl.datasource.type === 'grafana-skyminer-datasource'" ng-show="ctrl.expandSafeguard">
+        <div class="gf-form">
+            <div class="gf-form">
+                <label class="gf-form-label query-keyword width-11">
+                    Safeguard limits
+                </label>
+            </div>
+        </div>
+        <div class="gf-form">
+            <label class="gf-form-label" bs-tooltip="'Maximum datapoints before aggregation (per series)'">
+                Before aggregation
+            </label>
+            <input class="gf-form-input" type="text" placeholder="Maximum datapoints" ng-model="ctrl.target.safeGuard.before_aggregation">
+
+            <label class="gf-form-label" bs-tooltip="'Maximum datapoints after aggregation (per series)'">
+                After aggregation
+            </label>
+            <input class="gf-form-input" type="text" placeholder="Maximum datapoints" ng-model="ctrl.target.safeGuard.after_aggregation">
+
+            <label class="gf-form-label" bs-tooltip="'Maximum number of series (for the group by)'">
+                Number of series (group by)
+            </label>
+            <input class="gf-form-input" type="text" placeholder="Maximum datapoints" ng-model="ctrl.target.safeGuard.group_limit">
+            <label class="gf-form-label orange">
+                <i class="fa fa-exclamation-triangle orange"></i>
+                Any change will be applied to all metrics defined in this panel.
+            </label>
+        </div>
+</div>
+
+<div class="gf-form-inline" ng-show="ctrl.enabledFetchPreviousSamples">
+    <div class="gf-form">
+        <div class="gf-form">
+            <label class="gf-form-label query-keyword width-11">
+                Fetch Previous Samples
+            </label>
+        </div>
+    </div>
+
+    <div class="gf-form-inline" ng-if="ctrl.enabledFetchPreviousSamples">
+        <div class="gf-form">
+            <label class="gf-form-label"
+                   bs-tooltip="'Allows you to fetch the last known value at the beginning of the dashboard'">
+                <i class="fa fa-info"></i>
+            </label>
+        </div>
+        <label class="gf-form-label">
+            Merge groups
+        </label>
+        <div class="gf-form">
+            <gf-form-switch class="gf-form"
+                            checked="ctrl.target.fetch_previous_sample.merge_groups"
+                            ng-click="ctrl.toggleFetchprevioussampleMergegroups()">
+            </gf-form-switch>
+        </div>
+        <label class="gf-form-label">
+            Time align
+        </label>
+        <div class="gf-form">
+            <gf-form-switch class="gf-form"
+                            checked="ctrl.target.fetch_previous_sample.time_align"
+                            ng-click="ctrl.toggleFetchprevioussampleTimealign()">
+            </gf-form-switch>
+        </div>
+        <label class="gf-form-label">
+            For empty results only
+        </label>
+        <div class="gf-form">
+            <gf-form-switch class="gf-form"
+                            checked="ctrl.target.fetch_previous_sample.for_empty_results_only"
+                            ng-click="ctrl.toggleFetchprevioussampleForemptyresultsonly()">
+            </gf-form-switch>
+        </div>
+        <label class="gf-form-label orange">
+            <i class="fa fa-exclamation-triangle orange"></i>
+            Any change will be applied to all metrics defined in this panel.
+        </label>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/metric.names.loading.html'" ng-if="!ctrl.datasource.initialized"></ng-include>
+<query-editor-row query-ctrl="ctrl" can-collapse="true" ng-if="ctrl.datasource.initialized">
+    <ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/metric.name.row.html'"></ng-include>
+    <ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/tags.editor.html'"></ng-include>
+    <ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/metric.time.override.html'"
+                ng-if="ctrl.datasource.type === 'grafana-skyminer-datasource'"></ng-include>
+    <kairosdb-feature ng-if="ctrl.showFeatures()"
+             ng-repeat="feature in ctrl.features track by $index"
+             template="feature"
+             feature="ctrl.target.query.features[$index]"
+             variables="ctrl.templateVariables"
+    ></kairosdb-feature>
+</query-editor-row>

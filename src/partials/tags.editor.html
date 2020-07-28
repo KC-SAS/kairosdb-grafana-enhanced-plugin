@@ -1,0 +1,44 @@
+<div class="gf-form-group" ng-if="ctrl.target.query.metricName">
+    <div class="gf-form-inline">
+        <div class="gf-form">
+            <label class="gf-form-label query-keyword width-11">
+                Tags
+            </label>
+        </div>
+        <div class="gf-form" ng-if="!ctrl.tagsInitializationError && !ctrl.isMetricNameTemplateVariable">
+            <label class="gf-form-label" ng-show="!ctrl.tags.initialized">
+                Loading tags... <span class="fa fa-spinner fa-spin"></span>
+            </label>
+            <label class="gf-form-label" ng-show="ctrl.tags.initialized">
+                <b>{{ctrl.tags.size}} tags, {{ctrl.tags.combinations}} combinations</b>
+            </label>
+        </div>
+        <div class="gf-form" ng-if="ctrl.isMetricNameTemplateVariable">
+            <label class="gf-form-label">
+                <b>No available tags with template metric name</b>
+            </label>
+        </div>
+        <div class="gf-form" ng-if="ctrl.tagsInitializationError">
+            <label class="gf-form-label" style="color: red">
+                <strong>Unable to load tags: {{ctrl.tagsInitializationError}}</strong>
+            </label>
+        </div>
+        <div class="gf-form" ng-if="!ctrl.tagsInitializationError">
+            <label class="gf-form-label">
+                <a ng-click="ctrl.addFilter();">
+                    <i class="fa fa-plus" bs-tooltip="'Add a filter'"></i>
+                </a>
+            </label>
+        </div>
+    </div>
+    <!-- tags from controls -->
+    <kairosdb-tags-select
+            ng-if="!ctrl.isMetricNameTemplateVariable"
+            selected-values="ctrl.target.query.tags[tagName]"
+            tag-name="tagName"
+            tag-values="tagValues"
+            ng-repeat="(tagName, tagValues) in ctrl.tags.tags">
+    </kairosdb-tags-select>
+    <!-- added filters -->
+    <ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/filters.editor.html'"></ng-include>
+</div>

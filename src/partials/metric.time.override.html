@@ -1,0 +1,38 @@
+<div class="gf-form-inline" ng-if="ctrl.target.query.metricName">
+    <div class="gf-form">
+        <label class="gf-form-label query-keyword width-11">
+            Time Override
+        </label>
+    </div>
+    <div class="gf-form" bs-tooltip="'Allows you to redefined the time range for the query in relative time (from the time range of the dashboard)'">
+        <gf-form-switch class="gf-form"
+                        checked="ctrl.enabledTimeOverride"
+                        ng-click="ctrl.toggleTimeoverride()">
+        </gf-form-switch>
+    </div>
+    <div class="gf-form" ng-if="ctrl.enabledTimeOverride">
+        <label class="gf-form-label"
+               bs-tooltip="'Time Override is based on the start and end times of your dashboard. It applies the offset value to both bounds. By default it is asking for data from the past, but if you want to ask for data from the future you can provide a negative value (e.g -1 hour to have values for the next hour)'">
+            <i class="fa fa-info"></i>
+        </label>
+    </div>
+    <div class="gf-form-inline" ng-if="ctrl.enabledTimeOverride">
+        <label class="gf-form-label">
+            Of
+        </label>
+        <div class="gf-form">
+            <input class="gf-form-input time-override-input" type="number" ng-model="ctrl.target.query.time_offset.value" />
+        </div>
+        <div class="gf-form">
+            <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.query.time_offset.unit">
+                <option ng-repeat="option in ctrl.timeUnitOptions() track by $index" value="{{option}}">{{option}}</option>
+            </select>
+        </div>
+        <label class="gf-form-label">
+            Prior to the dashboard time range
+        </label>
+        <label ng-if="ctrl.timeOverrideError.length" class="gf-form-label error">
+            {{ctrl.timeOverrideError}}
+        </label>
+    </div>
+</div>

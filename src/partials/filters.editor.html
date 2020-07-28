@@ -1,0 +1,49 @@
+<div class="gf-form-inline"
+     ng-repeat="(filterIndex, filter) in ctrl.filters"
+     ng-class="{'filter-error': !filter.name || (filter.name && filter.values.length === 0) }">
+    <div class="gf-form offset-width-11">
+        <label ng-if="!filter.showInput"
+               class="gf-form-label min-width-10"
+               ng-click="ctrl.showInput(filterIndex)"
+               ng-class="{'template-variable': ctrl.datasource.isTemplateVariable(filter.name)}">
+            {{filter.name}}
+        </label>
+        <input ng-if="filter.showInput"
+               class="gf-form-input" type="text"
+               placeholder="Enter a tag name"
+               kairosdb-custom-autofocus
+               ng-keypress="ctrl.onKeyPressFilter($event, filterIndex)"
+               ng-blur="ctrl.onFocusOutFilterInput(filterIndex)"
+               ng-model="filter.name"/>
+    </div>
+    <div class="gf-form-label" >
+        <div class="gf-form-inline">
+            <input class="gf-form-input width-10 tag-value-input"
+                   name="'filter{{filterIndex}}values'"
+                   type="text"
+                   placeholder="Enter a tag value"
+                   ng-keypress="ctrl.onKeyPressValues($event, filterIndex, $event.target)"
+            />
+            <div ng-repeat="(filterValueIndex, value) in filter.values" class="gf-form custom-tag-value">
+                <span ng-class="{'template-variable': ctrl.datasource.isTemplateVariable(value)}">{{value}}</span>
+                <span>
+                    <a ng-click="ctrl.removeFilterValue(filterIndex, filterValueIndex);">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <label class="gf-form-label">
+        <a ng-click="ctrl.removeFilter($index);">
+            <i class="fa fa-times"></i>
+        </a>
+    </label>
+    <div class="gf-form gf-form--grow">
+        <div class="gf-form-label gf-form-label--grow">
+            <label class="filter-error-label" ng-if="!filter.name || (filter.name && filter.values.length === 0)">
+                You must choose a tag name and at least one value to apply this filter to the query
+            </label>
+        </div>
+    </div>
+</div>

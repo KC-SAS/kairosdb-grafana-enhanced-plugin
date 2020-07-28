@@ -1,0 +1,39 @@
+<div class="gf-form" ng-switch="parameter.type" ng-repeat="parameter in ctrl.component.parameters track by $index">
+    <div
+        ng-if="ctrl.needsLabel(parameter) && ctrl.showParameter(parameter)"
+        ng-class="{'gf-form-label': true, 'italic': parameter.optional}"
+        bs-tooltip="'{{parameter.description}}'"
+        data-delay='{"show":"500", "hide":"150"}'>
+            {{parameter.label}} {{parameter.optional ? '(optional)' : ''}}
+    </div>
+
+    <div ng-if="ctrl.showParameter(parameter)" class="gf-form-inline" ng-switch-when="bool" bs-tooltip="'{{parameter.description}}'" data-delay='{"show":"500", "hide":"150"}'>
+        <gf-form-switch ng-class="{'gf-form': true, 'italic': parameter.optional}" label="{{parameter.label}} {{parameter.optional ? '(optional)' : ''}}" checked="parameter.value"></gf-form-switch>
+    </div>
+
+    <input ng-if="ctrl.showParameter(parameter)" class="gf-form-input" type="text" ng-switch-when="number" ng-model="parameter.value" ng-change="invalidValue=parameter.validate()"
+           ng-class="{'ng-invalid': invalidValue}" bs-tooltip="invalidValue">
+    <input ng-if="!parameter.multiline && ctrl.showParameter(parameter)" class="gf-form-input" type="text" ng-switch-when="string" ng-model="parameter.value"
+           ng-change="invalidValue=parameter.validate()" ng-class="{'ng-invalid': invalidValue}" bs-tooltip="invalidValue">
+    <textarea ng-if="parameter.multiline && ctrl.showParameter(parameter)" class="gf-form-input" rows="1" ng-switch-when="string" ng-model="parameter.value" ng-change="invalidValue=parameter.validate()"
+              ng-class="{'ng-invalid': invalidValue}" bs-tooltip="invalidValue"></textarea>
+
+    <div ng-if="ctrl.showParameter(parameter)" class="gf-form-select-wrapper" ng-switch-when="enum">
+        <select class="gf-form-input gf-size-auto" ng-model="parameter.value">
+            <option ng-repeat="option in parameter.formatOptions() track by $index" value="{{parameter.values[$index]}}">{{option}}</option>
+        </select>
+    </div>
+
+    <div ng-if="ctrl.showParameter(parameter)" class="gf-form-inline" ng-class="{'ng-invalid': invalidValue}" ng-switch-when="array" bs-tooltip="invalidValue">
+        <div class="gf-form-select-wrapper" ng-show="parameter.values">
+            <select class="gf-form-input gf-size-auto" ng-model="selected_value" ng-change="ctrl.pushItem(parameter, selected_value)">
+                <option value="" selected disabled hidden>Available {{parameter.source.toLowerCase()}}</option>
+                <option ng-repeat="option in parameter.values track by $index" value="{{option}}">{{option}}</option>
+            </select>
+        </div>
+        <bootstrap-tagsinput ng-model="parameter.value" tagclass="label label-tag" placeholder="add values" ng-change="invalidValue=parameter.validate()">
+        </bootstrap-tagsinput>
+    </div>
+
+    <kairosdb-feature-component-editor class="gf-form-inline" component="parameter" ng-switch-when="object"></kairosdb-feature-component-editor>
+</div>

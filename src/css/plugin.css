@@ -1,0 +1,150 @@
+.group-by-tag-checkbox input+label::before,
+.group-by-tag-checkbox input+label::after {
+    transition: none !important;
+    background: #292929 none;
+}
+
+.group-by-tag-checkbox {
+    margin-left: -3px;
+}
+
+.group-by-tag-checkbox input+label::before {
+    color: #eb6618;
+}
+
+.group-by-tag-checkbox:hover input+label::before {
+    color: #eb6618;
+}
+
+.group-by-tag-checkbox input+label::after {
+    color: #5bbf00;
+}
+
+.group-by-tag-checkbox:hover input+label::after {
+    color: #5bbf00;
+}
+
+.tag-label {
+    margin-left: 2px;
+    margin-right: 0;
+}
+
+.highlight {
+    border: 1px dashed lightgoldenrodyellow;
+}
+
+.theme-light .highlight {
+    border-color: #0089bb !important;
+}
+
+.green {
+    color: #4CAF50;
+}
+
+.red {
+    color: #F44336;
+}
+.darkgray {
+    color: darkgray;
+}
+.orange {
+    color: #eb6618;
+}
+
+.tag-switch {
+    padding-right: 4px;
+}
+
+.feature-label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.gf-form-label.disabled {
+    background-color: #d75546;
+    cursor: pointer;
+}
+
+.gf-form-label.enabled {
+    background-color: #3eb15b;
+    cursor: pointer;
+}
+
+.disabled .fa, .enabled .fa {
+    color: white;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.separator {
+    width: 1px;
+    margin: 0 5px;
+}
+
+.highlight .separator{
+    border-right: 2px solid lightgoldenrodyellow;
+}
+
+.theme-light .highlight .separator {
+    border-color: #0089bb !important;
+}
+
+.custom-tag-value {
+    background-color: #2D2F35;
+    color: #f2f2f2;
+    white-space: nowrap;
+    border-radius: 3px;
+    text-shadow: none;
+    font-size: 13px;
+    padding: 2px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: -3px;
+    height: 23px;
+}
+
+.custom-tag-value > span {
+    margin-left: 5px;
+}
+
+.tag-value-input {
+    margin-top: -9px;
+}
+
+.filter-error {
+    border: 1px solid red;
+}
+
+.filter-error-label {
+    color: red;
+    font-weight: bold;
+}
+
+.variable-value-link {
+    line-height: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 100px;
+    max-width: 498px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.query-editor-row__body {
+    margin: 2px 0 10px 0 !important;
+}
+
+.time-override-input {
+    width: 70px !important;
+}
+
+.gf-form-label.error {
+    color: red !important;
+}

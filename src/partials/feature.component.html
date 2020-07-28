@@ -1,0 +1,33 @@
+<div class="gf-form">
+    <label class="gf-form-label feature-label query-keyword width-11 offset-width-11" data-placement="left">
+        {{ctrl.component.label}}
+    </label>
+</div>
+<div class="gf-form">
+    <label class="gf-form-label">
+        <a ng-click="ctrl.onMoveUp(ctrl.component)">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </label>
+    <label class="gf-form-label">
+        <a ng-click="ctrl.onMoveDown(ctrl.component)">
+            <i class="fa fa-arrow-down"></i>
+        </a>
+    </label>
+</div>
+<ng-include class="gf-form" ng-switch="parameter.type" ng-repeat="parameter in ctrl.component.parameters track by $index"
+    src="'public/plugins/grafana-kairosdb-datasource/partials/feature.component.parameter.html'"></ng-include>
+<div class="gf-form">
+    <label class="gf-form-label">
+        <a ng-click="ctrl.onEdit(ctrl.component)">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </label>
+</div>
+<div class="gf-form">
+    <label class="gf-form-label">
+        <a ng-click="ctrl.onRemove(ctrl.component)">
+            <i class="fa fa-times"></i>
+        </a>
+    </label>
+</div>
