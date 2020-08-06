@@ -27,13 +27,13 @@ export {
 
 angular
   .module("grafana.directives")
-  .directive("kairosdbMetricNameField", MetricNameFieldDirective)
-  .directive("kairosdbTagsSelect", TagsSelectDirective)
-  .directive("kairosdbTagInput", TagInputDirective)
-  .directive("kairosdbFeature", FeatureDirective)
-  .directive("kairosdbFeatureComponent", FeatureComponentDirective)
-  .directive("kairosdbFeatureComponentEditor", FeatureComponentEditorDirective)
-  .directive("kairosdbCustomAutofocus", ($timeout) => {
+  .directive("kairosdbEnhancedMetricNameField", MetricNameFieldDirective)
+  .directive("kairosdbEnhancedTagsSelect", TagsSelectDirective)
+  .directive("kairosdbEnhancedTagInput", TagInputDirective)
+  .directive("kairosdbEnhancedFeature", FeatureDirective)
+  .directive("kairosdbEnhancedFeatureComponent", FeatureComponentDirective)
+  .directive("kairosdbEnhancedFeatureComponentEditor", FeatureComponentEditorDirective)
+  .directive("kairosdbEnhancedCustomAutofocus", ($timeout) => {
     return {
       restrict: "A",
       link: (scope, element) => {$timeout(() => {
