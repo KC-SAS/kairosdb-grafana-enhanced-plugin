@@ -46,6 +46,6 @@ export function TagInputDirective() {
             segment: "=",
             tagValues: "=",
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/tag.input.html"
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/tag.input.html"
     };
 }

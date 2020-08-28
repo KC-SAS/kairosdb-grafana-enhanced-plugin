@@ -1,5 +1,5 @@
 <div class="gf-form" ng-switch-when="object">
-    <ng-include ng-switch="parameter.type" ng-repeat="parameter in parameter.parameters track by $index" src="'public/plugins/grafana-kairosdb-datasource/partials/feature.component.parameter.html'"></ng-include>
+    <ng-include ng-switch="parameter.type" ng-repeat="parameter in parameter.parameters track by $index" src="'public/plugins/grafana-kairosdb-enhanced-datasource/partials/feature.component.parameter.html'"></ng-include>
 </div>
 <div class="gf-form-label" ng-switch-when="bool" ng-show="parameter.value">{{parameter._label.toLowerCase()}}</div>
 <div class="gf-form-label" ng-switch-when="enum">{{parameter._label.toLowerCase()}}: {{parameter.value.toLowerCase()}}</div>

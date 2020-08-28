@@ -17,6 +17,6 @@ export function FeatureComponentDirective() {
             onEdit: "&",
             onRemove: "&",
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/feature.component.html",
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/feature.component.html",
     };
 }

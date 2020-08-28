@@ -101,6 +101,6 @@ export function MetricNameFieldDirective() {
             metricNames: "=",
             value: "="
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/metric.name.field.html"
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/metric.name.field.html"
     };
 }

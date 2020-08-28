@@ -51,6 +51,6 @@ export function TagsSelectDirective() {
             tagName: "=",
             tagValues: "="
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/tags.select.html"
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/tags.select.html"
     };
 }

@@ -38,6 +38,6 @@ export function FeatureComponentEditorDirective() {
         scope: {
             component: "="
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/feature.component.editor.html",
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/feature.component.editor.html",
     };
 }

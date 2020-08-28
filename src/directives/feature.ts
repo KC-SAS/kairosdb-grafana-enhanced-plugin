@@ -142,6 +142,6 @@ export function FeatureDirective() {
             template: "=",
             feature: "="
         },
-        templateUrl: "public/plugins/grafana-kairosdb-datasource/partials/feature.html",
+        templateUrl: "public/plugins/grafana-kairosdb-enhanced-datasource/partials/feature.html",
     };
 }
