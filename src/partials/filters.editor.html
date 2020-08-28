@@ -11,7 +11,7 @@
         <input ng-if="filter.showInput"
                class="gf-form-input" type="text"
                placeholder="Enter a tag name"
-               kairosdb-enhanced-custom-autofocus
+               kairosdb-custom-autofocus
                ng-keypress="ctrl.onKeyPressFilter($event, filterIndex)"
                ng-blur="ctrl.onFocusOutFilterInput(filterIndex)"
                ng-model="filter.name"/>

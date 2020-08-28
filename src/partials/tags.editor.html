@@ -32,13 +32,13 @@
         </div>
     </div>
     <!-- tags from controls -->
-    <kairosdb-enhanced-tags-select
+    <kairosdb-tags-select
             ng-if="!ctrl.isMetricNameTemplateVariable"
             selected-values="ctrl.target.query.tags[tagName]"
             tag-name="tagName"
             tag-values="tagValues"
             ng-repeat="(tagName, tagValues) in ctrl.tags.tags">
-    </kairosdb-enhanced-tags-select>
+    </kairosdb-tags-select>
     <!-- added filters -->
     <ng-include src="'public/plugins/grafana-kairosdb-datasource/partials/filters.editor.html'"></ng-include>
 </div>
