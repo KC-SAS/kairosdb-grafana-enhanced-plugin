@@ -3,10 +3,10 @@
 	<ng-include src="'public/plugins/grafana-kairosdb-enhanced-datasource/partials/tags.editor.html'"></ng-include>
 	<ng-include src="'public/plugins/grafana-kairosdb-enhanced-datasource/partials/metric.time.override.html'"
 				ng-if="ctrl.datasource.type === 'grafana-skyminer-datasource'"></ng-include>
-	<skyminer-feature ng-if="ctrl.showFeatures()"
+	<kairosdb-enhanced-feature ng-if="ctrl.showFeatures()"
 			 ng-repeat="feature in ctrl.features track by $index"
 			 template="feature"
 			 feature="ctrl.target.query.features[$index]"
 			 variables="ctrl.templateVariables"
-	></skyminer-feature>
+	></kairosdb-enhanced-feature>
 </div>

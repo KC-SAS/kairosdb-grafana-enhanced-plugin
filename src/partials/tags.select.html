@@ -11,7 +11,7 @@
 
     <div class="tags-container">
         <div class="gf-form" ng-repeat="segment in ctrl.segments">
-            <skyminer-tag-input segment="segment" tag-values="ctrl.availableValues" on-change="ctrl.onChange()"></skyminer-tag-input>
+            <kairosdb-enhanced-tag-input segment="segment" tag-values="ctrl.availableValues" on-change="ctrl.onChange()"></kairosdb-enhanced-tag-input>
             <div class="gf-form-label" ng-if="!$last">
                 <a ng-click="ctrl.remove(segment)">
                     <i class="fa fa-times"></i>

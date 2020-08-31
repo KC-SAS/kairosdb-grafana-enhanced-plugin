@@ -21,7 +21,7 @@
             <gf-form-switch class="gf-form" label="Show optional parameters" checked="ctrl.showOptional"></gf-form-switch>
         </div>
         <div class="separator"></div>
-        <skyminer-feature-component-editor class="gf-form-inline" component="pickedComponent"></skyminer-feature-component-editor>
+        <kairosdb-enhanced-feature-component-editor class="gf-form-inline" component="pickedComponent"></kairosdb-enhanced-feature-component-editor>
         <div class="separator"></div>
         <div class="gf-form" ng-if="pickedComponent">
             <label class="gf-form-label">
@@ -41,11 +41,11 @@
         </div>
     </div>
     <!-- List of all component -->
-    <skyminer-feature-component class="gf-form-inline"
+    <kairosdb-enhanced-feature-component class="gf-form-inline"
                        ng-repeat="component in ctrl.feature.components track by $index"
                        component="component"
                        on-remove="ctrl.remove(component)"
                        on-edit="ctrl.edit(component)"
                        on-move-up="ctrl.moveUp(component)"
-                       on-move-down="ctrl.moveDown(component)"></skyminer-feature-component>
+                       on-move-down="ctrl.moveDown(component)"></kairosdb-enhanced-feature-component>
 </div>
