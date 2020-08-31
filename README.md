@@ -27,6 +27,15 @@ This code and binaries are provided as-is, with no warranty whatsoever, but you 
 This plugin needs to be extracted to the Grafana plugins directory.
 It cannot be installed through Grafana CLI.
 
+## Build
+
+This plugin can be built from source code using Grunt:
+
+```
+npm install grunt -g
+npm install
+grunt
+```
 
 ## Plugin releases mechanism
 
