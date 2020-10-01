@@ -1,7 +1,7 @@
 <div class="gf-form-inline"
      ng-repeat="(filterIndex, filter) in ctrl.filters"
      ng-class="{'filter-error': !filter.name || (filter.name && filter.values.length === 0) }">
-    <div class="gf-form offset-width-11">
+    <div class="gf-form padding-left-4 offset-width-11">
         <label ng-if="!filter.showInput"
                class="gf-form-label min-width-10"
                ng-click="ctrl.showInput(filterIndex)"
@@ -39,9 +39,9 @@
             <i class="fa fa-times"></i>
         </a>
     </label>
-    <div class="gf-form gf-form--grow">
-        <div class="gf-form-label gf-form-label--grow">
-            <label class="filter-error-label" ng-if="!filter.name || (filter.name && filter.values.length === 0)">
+    <div class="gf-form gf-form--grow" ng-if="!filter.name || (filter.name && filter.values.length === 0)">
+        <div class="gf-form-label">
+            <label class="filter-error-label">
                 You must choose a tag name and at least one value to apply this filter to the query
             </label>
         </div>
