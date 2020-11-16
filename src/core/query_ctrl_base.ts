@@ -60,7 +60,8 @@ export class KairosDBQueryCtrlBase implements KairosDBQueryCtrlBaseInterface {
      * Scope from AngularJS (forward declaration)
      */
     public $scope = {
-        $root: {}
+        $root: {},
+        $apply: () => {}
     };
 
     /**
