@@ -97,7 +97,10 @@ export class KairosDBQueryCtrlBase implements KairosDBQueryCtrlBaseInterface {
         this.datasource
             .getFeatures()
             .then((features) => (this.features = features), () => (this.features = LegacyFeatures()))
-            .then(() => this.refreshTemplate());
+            .then(() => {
+                this.refreshTemplate();
+                this.$scope.$apply();
+            });
 
         this.initialize();
         this.isMetricNameTemplateVariable = this.datasource.isTemplateVariable(this.target.query.metricName);
@@ -228,7 +231,10 @@ export class KairosDBQueryCtrlBase implements KairosDBQueryCtrlBaseInterface {
             this.datasource
                 .getMetricTags(metricName)
                 .then((tags) => this.tags.updateTags(tags), (error) => (this.tagsInitializationError = error.data.message))
-                .then(() => this.refreshTemplate());
+                .then(() => {
+                    this.refreshTemplate();
+                    this.$scope.$apply();
+                });
         }
     }
 
