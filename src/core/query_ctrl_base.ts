@@ -61,7 +61,7 @@ export class KairosDBQueryCtrlBase implements KairosDBQueryCtrlBaseInterface {
      */
     public $scope = {
         $root: {},
-        $apply: () => {}
+        $apply: () => { return; }
     };
 
     /**
