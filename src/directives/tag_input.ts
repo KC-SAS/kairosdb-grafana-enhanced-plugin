@@ -17,7 +17,7 @@ export class TagInputCtrl {
 
     public getTags(): Promise<string[]> {
         const query = this.$scope.getTagInputValue();
-        return this.promiseUtils.resolvedPromise((this.tagValues||[])
+        return this.promiseUtils.resolvedPromise((this.tagValues || [])
             .filter((tagValue) => _.includes(tagValue, query))
             .slice(0, TAG_VALUE_SUGGESTIONS_LIMIT)
             .map((tagValue) => {
