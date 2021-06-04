@@ -5,13 +5,19 @@ export class TagsSelectCtrl {
     public availableValues: string[];
     public selectedValues: string[];
     public segments: any[];
+    public $scope: any;
 
     /** @ngInject **/
-    constructor(private uiSegmentSrv) {
+    constructor( $scope, private uiSegmentSrv) {
+        this.$scope = $scope;
         this.selectedValues = this.selectedValues || [];
         this.availableValues = this.tagValues;
         this.segments = this.selectedValues.map((tagValue) => this.uiSegmentSrv.newSegment(tagValue));
         this.segments.push(this.uiSegmentSrv.newPlusButton());
+        setTimeout( ( ) => { this.segments = this.selectedValues.map( ( tagValue ) => this.uiSegmentSrv.newSegment(tagValue) );
+                             this.segments.push(this.uiSegmentSrv.newPlusButton());
+                             this.$scope.$apply();
+        }, 500);
     }
 
     public onChange(): void {

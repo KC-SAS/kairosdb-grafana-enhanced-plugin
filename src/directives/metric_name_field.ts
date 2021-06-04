@@ -20,6 +20,11 @@ export class MetricNameFieldCtrl {
         this.$scope = $scope;
         this.$q = $q;
         this.uiSegmentSrv = uiSegmentSrv;
+        if (this.$scope.ctrl.target) {
+            if (this.$scope.ctrl.target.query) {
+                this.value = this.$scope.ctrl.target.query.metricName;
+            }
+        }
         this.promiseUtils = new PromiseUtils($q);
         this.segment = this.value ? uiSegmentSrv.newSegment(this.value) : uiSegmentSrv.newSelectMetric();
         this.aliasAddedVisible = !_.isNil(this.alias);
